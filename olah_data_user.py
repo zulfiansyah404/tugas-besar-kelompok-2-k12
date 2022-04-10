@@ -1,39 +1,54 @@
-import os
 from baca import *
 from olah_csv import *
 
-def tambah_user(nama, username, password, data):
-    for i in data:
-        if (i["username"] == username):
-            return False
-    print(data)
-    N = hitungBaris(data) + 2
-    #print(N)
-    paket = [str(N), username, nama, password, "user", "0"]
-    tambah_data(paket, "user")
-    return True
-
-def register(data):
-    os.system('cls')
+def register(database):
+    clear()
     print("Registrasi")
-    print("----------\n")
+    garis2(10)
+    data = database["user"]
 
     nama = input("Masukkan Nama: ")
     username = input("Masukkan Username: ")
     password = input("Masukkan Password: ")
 
-    if (tambah_user(nama, username, password, data)):
-        print("Data User berhasil ditambahkan!")
-        input()
-    else:
-        print("Username pernah ada sebelumnya. Coba Masukkan Lagi!")
-        input()
-        register(data)
+    # Cek apakah username ada di dalam data atau tidak
+    ada = False
+    for arr in data:
+        if (arr["username"] == username):
+            ada = True
+            break
+    
+    panjangDataBaru = hitungBaris(data) + 2
+    if (not(ada)):  # Jika username belum pernah ada di database
+        temp = ["" for i in range(panjangDataBaru)] # Buat data sementara
+        i = 0
+        for arr in data:
+            temp[i] = arr
+            i += 1
+        temp[i] = {
+            "id" : str(panjangDataBaru),
+            "username" : username,
+            "nama" : nama,
+            "password" : password,
+            "role" : "user",
+            "saldo" : "0"
+        }
 
-    return data
+        data = temp
+
+        # Untuk Debug
+        #for i in data:
+        #    print(i)
+
+        print("Data berhasil ditambahkan!")
+        garis2(10)
+        baca()
+    else:
+        print("Username sudah ada. Coba Ulangi!")
+        garis(10)
+        baca()
+        register(database)
+        
 
 def topup(database, user):
     print()
-
-a = csv_to_array("user")
-print(register(a))

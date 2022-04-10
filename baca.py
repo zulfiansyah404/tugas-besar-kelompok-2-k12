@@ -15,7 +15,7 @@ def garis(x):
 
 def garis2(x):
     for i in range(x):
-        print("-")
+        print("-", end= '')
     print()
 
 def baca():
@@ -24,3 +24,6 @@ def baca():
 
 def clear():
     os.system('cls')
+
+def hijau():
+    os.system('color a')

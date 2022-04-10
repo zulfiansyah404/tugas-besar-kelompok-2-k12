@@ -6,11 +6,10 @@ def hitungBaris(arr):
         ans += 1
     return ans
 
-def csv_to_array(nama_csv):
-    database = open(nama_csv + ".csv")
+def csv_to_array(nama_csv, dirs):
+    database = open(dirs + nama_csv + ".csv")
     arr = database.readlines()
     baris = hitungBaris(arr)     
-    print("Baris : ", baris)
     data = ["" for i in range(baris)]
     
     j = 0
@@ -72,16 +71,7 @@ def csv_to_array(nama_csv):
                 j += 1
         j = 0
 
-    print(data[0]["saldo"])
+    #print(data[0]["saldo"])
     return data
-
-def tambah_data(paket, nama):
-    data = ""
-    for arr in paket:
-        if (arr != paket[0]): data += ";"
-        data += arr
-    database = open(nama + ".csv", "a")
-    database.write("\n" + data)
-    database.close()
 
 
