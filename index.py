@@ -7,7 +7,7 @@ from fitur import *
 # database = array berisi data pada user.csv
 # user = indeks posisi user pada elemen array
 
-def user(database, user):
+def User(database, user):
     print("1. List Game Toko")
     print("2. Beli Game")
     print("3. Game yang Dimiliki")
@@ -17,18 +17,18 @@ def user(database, user):
     print("7. Help")
     print("8. Save")
     print("9. Exit")
-    baca.garis2(10)
-    inp = int(input("Input = "))
+    garis2(10)
+    inp = input("Input = ")
     
-    if (inp == 1): list_game_toko(database["game"])
-    elif (inp == 2): database = buy_game(database, user)
-    elif (inp == 3): list_game(database["game"])
-    elif (inp == 4): search_my_game(database["game"], user)
-    elif (inp == 5): search_game_at_store(database["game"])
-    elif (inp == 6): riwayat(database["riwayat"]) 
-    elif (inp == 7): help()
-    elif (inp == 8): save()
-    elif (inp == 9): keluar()  
+    if (inp == '1'): list_game_toko(database["game"])
+    elif (inp == '2'): database = buy_game(database, user)
+    elif (inp == '3'): list_game(database["game"])
+    elif (inp == '4'): search_my_game(database["game"], user)
+    elif (inp == '5'): search_game_at_store(database["game"])
+    elif (inp == '6'): riwayat(database["riwayat"]) 
+    elif (inp == '7'): help()
+    elif (inp == '8'): save()
+    elif (inp == '9'): keluar()  
 
 def admin(database, user):
     print("1. Register")
@@ -42,18 +42,18 @@ def admin(database, user):
     print("9. Save")
     print("10. Exit")
     garis2(10)
-    inp = int(input("Input = "))
+    inp = input("Input = ")
     
-    if (inp == 1): database = register(database)
-    elif (inp == 2): database = tambah_game(database)
-    elif (inp == 3): database = ubah_game(database)
-    elif (inp == 4): database = ubah_stok(database)
-    elif (inp == 5): list_game_toko(database["game"])
-    elif (inp == 6): search_game_at_store(database["game"])
-    elif (inp == 7): database = topup(database)   
-    elif (inp == 8): help()
-    elif (inp == 9): save()
-    elif (inp == 10): keluar()
+    if (inp == '1'): database = register(database)
+    elif (inp == '2'): database = tambah_game(database)
+    elif (inp == '3'): database = ubah_game(database)
+    elif (inp == '4'): database = ubah_stok(database)
+    elif (inp == '5'): list_game_toko(database["game"])
+    elif (inp == '6'): search_game_at_store(database["game"])
+    elif (inp == "7"): database = topup(database)   
+    elif (inp == '8'): help()
+    elif (inp == '9'): save(database)
+    elif (inp == "10"): keluar(database)
 
 def menu(database, user, isAdmin):
     clear()
@@ -68,7 +68,7 @@ def menu(database, user, isAdmin):
         admin(database, user)
     # Jika login sebagai user
     else:
-        user(database, user)
+        User(database, user)
     
     menu(database, user, isAdmin)    
 

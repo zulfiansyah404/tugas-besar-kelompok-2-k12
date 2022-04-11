@@ -61,6 +61,7 @@ def csv_to_array(nama_csv, dirs):
         #print(s)
         for c in s:
             #print("\tc =", c)
+            if (c == "\n"): break
             if (c != ';'): 
                 isi += c
             else:

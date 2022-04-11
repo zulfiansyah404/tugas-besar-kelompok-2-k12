@@ -30,7 +30,7 @@ def login(dir_file):
     for data in data_user:
         if (data["username"] == username):
             if (data["password"] == password):
-                print("Selamat datang," + data["nama"] + "!")
+                print("Selamat datang, " + data["nama"] + "!")
                 garis2(10)
                 print()
                 baca()
