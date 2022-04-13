@@ -102,7 +102,7 @@ def list_game_toko(data):
 def search_game_at_store():
     clear()
     # Tulis Kode Disini
-    # Petugas : Sjora
+    # Petugas : Fadhil
 
 def buy_game():
     clear()
