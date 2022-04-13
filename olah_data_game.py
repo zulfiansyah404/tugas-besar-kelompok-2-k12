@@ -108,6 +108,20 @@ def buy_game():
     clear()
     # Tulis Kode Disini
     # Petugas : Sjora
+    print('Beli Game')
+    garis2(10)
+    id_game = input('Masukkan ID Game: ')
+    print()
+
+    #id game dari game.csv
+        #if (id_game gaada di game.csv) and (saldo_user cukup) and (ada stok pada toko)
+            #print('Game berhasil dibeli!')
+        #elif (id_game udh ada di game.csv) and (saldo_user cukup) and (ada stok pada toko)
+            #print('Game sudah Anda miliki!')
+        #elif (id_game gaada di game.csv) and (saldo_user ga cukup) and (ada stok pada toko)
+            #print('Saldo Anda tidak cukup untuk membeli Game tersebut!')
+        #elif (id_game gaada di game.csv) and (saldo_user cukup) and (gaada stok pada toko)
+            #print('Stok Game tersebut habis!')
 
 def list_game():
     clear()
