@@ -78,9 +78,7 @@ def csv_to_array(nama_csv, dirs):
 def array_to_string(database, file):
     ans = ""
     i = 0
-    for data in database[file]:
-        print(data[i])
-        a = data[i]
+    for a in database[file]:
         b = ";"
         if (i != 0): ans += "\n"
         if (file == "game"):
