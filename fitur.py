@@ -7,6 +7,7 @@ def help():
     print("Help")
 
 def save(database):
+    clear()
     print("Save")
     garis2(5)
     nama_folder = input("Masukkan nama folder: ")
