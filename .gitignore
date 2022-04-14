@@ -1,3 +1,6 @@
 savedata
 __pycache__
-database
+game.csv
+kepemilikan.csv
+riwayat.csv
+user.csv
