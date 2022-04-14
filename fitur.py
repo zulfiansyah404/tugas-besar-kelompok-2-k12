@@ -24,7 +24,7 @@ def save(database):
 
     if (not(found_folder)): 
         os.system("cd savedata")
-        os.system("mkdir "+nama_folder)
+        os.system("md "+nama_folder)
         os.system("cd ..")
         csv_user = open(direc+"user.csv","x"); csv_user.close()
         csv_game = open(direc+"game.csv","x"); csv_game.close()
