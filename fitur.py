@@ -14,8 +14,8 @@ def save(database):
     # Cek apakah ada folder di dalam savedata
     direc = "savedata\\" + nama_folder + "\\"
 
-    if (not(os.path.exists("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder))): 
-        os.mkdir("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder)
+    if (not(os.path.exists("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo/savedata/"+nama_folder))): 
+        os.mkdir("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo/savedata/"+nama_folder)
 
     #Inisialisasi Data
     data_user = array_to_string(database, "user")
