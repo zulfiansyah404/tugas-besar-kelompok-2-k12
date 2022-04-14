@@ -75,4 +75,26 @@ def csv_to_array(nama_csv, dirs):
     #print(data[0]["saldo"])
     return data
 
+def array_to_string(database, file):
+    ans = ""
+    i = 0
+    for data in database[file]:
+        a = data[i]
+        b = ";"
+        if (i != 0): ans += "\n"
+        if (file == "game"):
+            ans += a["id"]+b+a["nama"]+b+a["kategori"]+b+a["tahun_rilis"]+b+a["harga"]+b+a["stok"]
+        elif (file == "user"):
+            ans += a["id"]+b+a["username"]+b+a["nama"]+b+a["password"]+b+a["role"]+b+a["saldo"]
+        elif (file == "riwayat"):
+            ans += a["gameid"]+b+a["nama"]+b+a["harga"]+b+a["user_id"]+b+a["tahun_beli"]
+        elif (file == "kepemilikan"):
+            ans += a["game_id"]+b+a["user_id"]
+        i += 1
+    
+    return ans
 
+def string_to_csv(file, direc, data):
+    f = open(direc+file+".csv", "w")
+    f.write(data)
+    f.close()
