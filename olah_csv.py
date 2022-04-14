@@ -63,16 +63,14 @@ def csv_to_array(nama_csv, dirs):
             if (c != ';'): 
                 isi += c
             elif (c == ";"):
-                print("\tdata[", i, "][", kolom[j], "] =" ,isi)
-                #print("\tj =", j)
+                #print("\tdata[", i, "][", kolom[j], "] =" ,isi)
                 data[i][kolom[j]] = isi
-                #print("\tdata[" + str(i) + "][" + kolom[j] + "] =", data[i][kolom[j]])
                 isi = ""
                 j += 1
             else:
                 break
         data[i][kolom[j]] = isi
-        print("\tdata[", i, "][", kolom[j], "] =" ,isi)
+        #print("\tdata[", i, "][", kolom[j], "] =" ,isi)
         j = 0
         
 
