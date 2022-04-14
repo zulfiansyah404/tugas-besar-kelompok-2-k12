@@ -47,3 +47,9 @@ def isNumber(x): # Fungsi mengecek apakah string x adalah angka
     for c in x:
         if (c < "0" or c > "9"): return False
     return True
+
+def length(x): # Fungsi Mencari panjang string
+    length = 0
+    for c in x:
+        length += 1
+    return length

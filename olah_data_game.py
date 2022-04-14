@@ -1,4 +1,5 @@
 from baca import *
+from fitur import length
 from olah_csv import *
 
 def quick_sort(data, left, right, indeks):
@@ -12,9 +13,9 @@ def quick_sort(data, left, right, indeks):
     pRight = right
 
     while (pLeft <= pRight):
-        while (int(data[pLeft][indeks]) < int(pivot)):
+        while ((data[pLeft][indeks]) < (pivot)):
             pLeft += 1
-        while (int(data[pRight][indeks]) > int(pivot)):
+        while ((data[pRight][indeks]) > (pivot)):
             pRight -= 1
         if (pLeft <= pRight):
             # Operasi Swab
@@ -27,6 +28,33 @@ def quick_sort(data, left, right, indeks):
     
     quick_sort(data, left, pRight, indeks)
     quick_sort(data, pLeft, right, indeks)
+
+def quick_sort_dec(data, left, right, indeks):
+    if (left >= right): return
+
+    tengah = int((left + right)/2)
+    #print(tengah, type(tengah))
+    #print(data[tengah][indeks])
+    pivot = data[tengah][indeks]
+    pLeft = left
+    pRight = right
+
+    while (pLeft <= pRight):
+        while ((data[pLeft][indeks]) > (pivot)):
+            pLeft += 1
+        while ((data[pRight][indeks]) < (pivot)):
+            pRight -= 1
+        if (pLeft <= pRight):
+            # Operasi Swab
+            temp = data[pLeft]
+            data[pLeft] = data[pRight]
+            data[pRight] = temp
+
+            pLeft += 1
+            pRight -= 1
+    
+    quick_sort_dec(data, left, pRight, indeks)
+    quick_sort_dec(data, pLeft, right, indeks)
 
 
 def tambah_game():
@@ -67,28 +95,41 @@ def list_game_toko(data):
     #print("| id | nama | kategori | tahun rilis | harga | stok |")
     #for i in data:
     #    print("|",i["id"],"|",i["nama"],"|",i["kategori"],"|",i["tahun_rilis"],"|",i["harga"],"|",i["stok"],"|")
-    
+    up = True
     ans = input("Urut Berdasarkan: ")
     print()
-    inp = ["harga", "tahun_rilis", "stok"]
+    inputValid = True
+    cek = ""
+    if (ans != ""):
+        inp = ["harga", "tahun_rilis", "stok"]    
 
-    inputValid = False
-    for i in inp:
-        if (ans == i): 
-            inputValid = True
-            break
-    
+        len = length(ans)
+        if (ans[len-1] == "-" or ans[len-1] == "+"): cek = ans[0:len-1]
+        else: cek = ans
+        
+        inputValid = False
+        for i in inp:
+            if (cek == i): 
+                inputValid = True
+                break
+
     if (inputValid):
-        quick_sort(data, 0, hitungBaris(data), ans)
+        if (ans == ""):
+            quick_sort(data, 0, hitungBaris(data), "id")
+        elif (ans == cek+"+" or ans == cek):
+            quick_sort(data, 0, hitungBaris(data), cek)
+        elif (ans == cek+"-"):
+            quick_sort_dec(data, 0, hitungBaris(data), cek)
+            
 
         # Output data
-        print("id | nama | kategori | tahun rilis | harga | stok\n")
+        print("id \t| nama \t| kategori \t| tahun rilis \t| harga \t| stok\n")
         for i in data:
-            print(i["id"], end=" | ")
-            print(i["nama"], end=" | ")
-            print(i["kategori"], end=" | ")
-            print(i["tahun_rilis"], end=" | ")
-            print(i["harga"], end=" | ")
+            print(i["id"], end=" \t| ")
+            print(i["nama"], end=" \t| ")
+            print(i["kategori"], end=" \t| ")
+            print(i["tahun_rilis"], end=" \t| ")
+            print(i["harga"], end=" \t| ")
             print(i["stok"], end="")
             print("\n")
         garis2(10)
