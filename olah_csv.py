@@ -56,21 +56,25 @@ def csv_to_array(nama_csv, dirs):
         isi = ""
         # Definisikan setiap Dictonary
         s = arr[i+1]
-        s += ";"
         # print(s)
         #print(s)
         for c in s:
-            #print("\tc =", c)
             if (c == "\n"): break
             if (c != ';'): 
                 isi += c
-            else:
+            elif (c == ";"):
+                print("\tdata[", i, "][", kolom[j], "] =" ,isi)
                 #print("\tj =", j)
                 data[i][kolom[j]] = isi
                 #print("\tdata[" + str(i) + "][" + kolom[j] + "] =", data[i][kolom[j]])
                 isi = ""
                 j += 1
+            else:
+                break
+        data[i][kolom[j]] = isi
+        print("\tdata[", i, "][", kolom[j], "] =" ,isi)
         j = 0
+        
 
     #print(data[0]["saldo"])
     return data
