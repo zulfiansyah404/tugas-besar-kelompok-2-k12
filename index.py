@@ -27,8 +27,8 @@ def User(database, user):
     elif (inp == '5'): search_game_at_store(database["game"])
     elif (inp == '6'): riwayat(database["riwayat"]) 
     elif (inp == '7'): help()
-    elif (inp == '8'): save()
-    elif (inp == '9'): keluar()  
+    elif (inp == '8'): save(database)
+    elif (inp == '9'): keluar(database)  
 
 def admin(database, user):
     print("1. Register")
@@ -61,7 +61,8 @@ def menu(database, user, isAdmin):
     garis(20); 
     print()
     print("Halo,", database["user"][user]["nama"] + "!\n")
-    print("Menu"); garis2(10)
+    print("Menu"); 
+    garis2(10)
 
     # Jika login sebagai admin
     if (isAdmin):

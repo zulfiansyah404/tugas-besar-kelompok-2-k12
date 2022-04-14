@@ -37,7 +37,7 @@ def register(database):
         }
 
         data = temp
-
+        database["user"] = data
         # Untuk Debug
         #for i in data:
         #    print(i)
@@ -45,11 +45,12 @@ def register(database):
         print("Data berhasil ditambahkan!")
         garis2(10)
         baca()
+        return database
     else:
         print("Username sudah ada. Coba Ulangi!")
         garis(10)
         baca()
-        register(database)
+        return register(database)
         
 def topup(database):
     # Petugas : Zulfiansyah

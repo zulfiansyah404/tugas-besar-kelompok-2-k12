@@ -4,12 +4,12 @@ from baca import *
 from login import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument("echo", help="echo the string you use here")
+parser.add_argument("echo", nargs="?")
 args = parser.parse_args()
 
 if __name__ == "__main__":
     os.system("title Program Binomo (Kelompok II K12)")
-    if (args.echo == ""):
+    if (args.echo == None):
         print("Tidak ada nama folder yang diberikan!")
         print("Usage: python program_binomo.py <nama_folder>")
     else:
