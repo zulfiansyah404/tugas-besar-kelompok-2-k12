@@ -7,25 +7,15 @@ def help():
     print("Help")
 
 def save(database):
+    print("Save")
+    garis2(5)
     nama_folder = input("Masukkan nama folder: ")
     
-    found_folder = False
     # Cek apakah ada folder di dalam savedata
-    for (root,dirs,files) in os.walk('savedata', topdown=True):
-        if (root == 'savedata'):
-            for folder in dirs:
-                if (folder == nama_folder):
-                    found_folder = True
-                    break
-        else:
-            break
-
     direc = "savedata\\" + nama_folder + "\\"
 
-    if (not(found_folder)): 
-        os.system("cd savedata")
-        os.system("md "+nama_folder)
-        os.system("cd ..")
+    if (not(os.path.exists("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder))): 
+        os.mkdir("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder)
         csv_user = open(direc+"user.csv","x"); csv_user.close()
         csv_game = open(direc+"game.csv","x"); csv_game.close()
         csv_kepemilikan = open(direc+"kepemilikan.csv","x"); csv_kepemilikan.close()
