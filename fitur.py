@@ -19,10 +19,10 @@ def save(database):
         os.mkdir("savedata/"+nama_folder)
 
     #Inisialisasi Data
-    data_user = array_to_string(database, "user")
-    data_game = array_to_string(database, "game")
-    data_riwayat = array_to_string(database, "riwayat")
-    data_kepemilikan = array_to_string(database, "kepemilikan")
+    data_user = "id;username;nama;password;role;saldo\n" + array_to_string(database, "user")
+    data_game = "id;nama;kategori;tahun_rilis;harga;stok\n" + array_to_string(database, "game")
+    data_riwayat = "game_id;nama;harga;user_id;tahun_beli\n"+array_to_string(database, "riwayat")
+    data_kepemilikan = "game_id;user_id\n" + array_to_string(database, "kepemilikan")
     
     string_to_csv("user", direc, data_user)
     string_to_csv("game", direc, data_game)
