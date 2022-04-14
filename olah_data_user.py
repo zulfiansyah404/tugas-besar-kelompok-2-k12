@@ -22,11 +22,13 @@ def register(database):
     
     panjangDataBaru = hitungBaris(data) + 2
     if (not(ada)):  # Jika username belum pernah ada di database
-        temp = ["" for i in range(panjangDataBaru)] # Buat data sementara
+        temp = ["" for i in range(panjangDataBaru)] # Buat data sementara yang baru dengan jumlah barisnya ditambah 1
         i = 0
+        # Mula - mula tempelkan data yang sebelumnya ke array temp
         for arr in data:
             temp[i] = arr
             i += 1
+        # Lalu buat directory array temp indeks paling bawah
         temp[i] = {
             "id" : str(panjangDataBaru),
             "username" : username,
@@ -35,9 +37,8 @@ def register(database):
             "role" : "user",
             "saldo" : "0"
         }
-
-        data = temp
-        database["user"] = data
+        data = temp                 # Lalu salin array temp ke array data
+        database["user"] = data     # Lalu salin array data ke database["user"]
         # Untuk Debug
         #for i in data:
         #    print(i)
@@ -84,7 +85,7 @@ def topup(database):
     if (isNumber(saldo)):
         if (saldo_user + int(saldo) >= 0):
             data[i]["saldo"] = str(saldo_user + int(saldo))
-            print("Top up berhasil. Saldo "+data[i]["nama"]+" bertambah menjadi"+data[i]["saldo"]+".")
+            print("Top up berhasil. Saldo "+data[i]["nama"]+" bertambah menjadi "+data[i]["saldo"]+".")
         else:
             print("Masukkan tidak valid.")
     else:
