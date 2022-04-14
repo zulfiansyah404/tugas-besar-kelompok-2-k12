@@ -13,6 +13,7 @@ def keluar(database):
     ans = input("Apakah anda ingin save data sebelum keluar? (y/n) ")
     if (ans == "y"):
         #Savedata
+        save(database)
         sys.exit()
     elif (ans == "n"):
         sys.exit()
