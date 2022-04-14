@@ -16,10 +16,10 @@ def save(database):
 
     if (not(os.path.exists("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder))): 
         os.mkdir("C:/Users/zulfi/OneDrive/Dokumen/ITB/Daspro/tugas-besar/repo2/savedata/"+nama_folder)
-        csv_user = open(direc+"user.csv","x"); csv_user.close()
-        csv_game = open(direc+"game.csv","x"); csv_game.close()
-        csv_kepemilikan = open(direc+"kepemilikan.csv","x"); csv_kepemilikan.close()
-        csv_riwayat = open(direc+"riwayat.csv","x"); csv_riwayat.close()
+        csv_user = open(direc+"user.csv","x")
+        csv_game = open(direc+"game.csv","x")
+        csv_kepemilikan = open(direc+"kepemilikan.csv","x")
+        csv_riwayat = open(direc+"riwayat.csv","x")
 
     #Inisialisasi Data
     data_user = array_to_string(database, "user")
