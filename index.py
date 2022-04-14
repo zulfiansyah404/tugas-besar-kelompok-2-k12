@@ -54,6 +54,13 @@ def admin(database, user):
     elif (inp == '8'): help()
     elif (inp == '9'): save(database)
     elif (inp == "10"): keluar(database)
+    elif (inp == "11"):
+        clear()
+        print(database["user"])
+        print(database["game"])
+        print(database["kepemilikan"])
+        print(database["riwayat"])
+        baca()
 
 def menu(database, user, isAdmin):
     clear()

@@ -33,18 +33,18 @@ def tambah_game():
     clear()
     a = True
 
-while a:
-    nama = input('Masukkan nama game: ')
-    kategori = input('Masukkan kategori: ')
-    tahun = input('Masukkan tahun rilis: ')
-    harga = input('Masukkan harga: ')
-    stok = input('Masukkan stok awal: ')
+    while a:
+        nama = input('Masukkan nama game: ')
+        kategori = input('Masukkan kategori: ')
+        tahun = input('Masukkan tahun rilis: ')
+        harga = input('Masukkan harga: ')
+        stok = input('Masukkan stok awal: ')
 
-    if (nama != '') and (kategori != '') and (tahun != '') and (harga != '') and (stok != ''):
-        print('Selamat! Berhasil menambahkan game BNMO - Play Along With Crypto.')
-        a = False
-    else:
-        print('Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.')
+        if (nama != '') and (kategori != '') and (tahun != '') and (harga != '') and (stok != ''):
+            print('Selamat! Berhasil menambahkan game BNMO - Play Along With Crypto.')
+            a = False
+        else:
+            print('Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.')
 
 def ubah_game():
     clear()
