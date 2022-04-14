@@ -79,6 +79,7 @@ def array_to_string(database, file):
     ans = ""
     i = 0
     for data in database[file]:
+        print(data[i])
         a = data[i]
         b = ";"
         if (i != 0): ans += "\n"
