@@ -44,8 +44,15 @@ def keluar(database):
         keluar(database)
 
 def isNumber(x): # Fungsi mengecek apakah string x adalah angka
+    i = 0
     for c in x:
+        #print(i)
+        if (c == "-"):
+            #print("\tnegatif")
+            if (i > 0): return False
+            else: continue
         if (c < "0" or c > "9"): return False
+        i += 1
     return True
 
 def length(x): # Fungsi Mencari panjang string

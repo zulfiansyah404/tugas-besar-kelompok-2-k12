@@ -13,6 +13,22 @@ def register(database):
     username = input("Masukkan Username: ")
     password = input("Masukkan Password: ")
 
+    # Cek input apakah kosong
+    if ((nama == "") or (username == "") or (password == "") ):
+        print("\nHarap Masukkan Input. Coba Ulangi!")
+        garis2(10)
+        baca()
+        return register(database)
+
+    # Cek username valid atau tidak 
+    for c in username:
+        if (('a' <= c <= 'z') or ('A' <= c <= 'Z') or (c == "-") or (c == '_') or ("0" <= c <= "9")): continue
+        else:
+            print("\nUsername Tidak Valid. Coba Ulangi!")
+            garis2(10)
+            baca()
+            return register(database)
+
     # Cek apakah username ada di dalam data atau tidak
     ada = False
     for arr in data:
@@ -43,13 +59,13 @@ def register(database):
         #for i in data:
         #    print(i)
 
-        print("Data berhasil ditambahkan!")
+        print("\nData berhasil ditambahkan!")
         garis2(10)
         baca()
         return database
     else:
-        print("Username sudah ada. Coba Ulangi!")
-        garis(10)
+        print("\nUsername sudah ada. Coba Ulangi!")
+        garis2(10)
         baca()
         return register(database)
         
