@@ -1,6 +1,7 @@
 from baca import *
 from olah_csv import *
 from fitur import isNumber
+from cipher import *
 
 def register(database):
     # Petugas : Zulfiansyah
@@ -49,7 +50,7 @@ def register(database):
             "id" : str(panjangDataBaru),
             "username" : username,
             "nama" : nama,
-            "password" : password,
+            "password" : encrypt(password),
             "role" : "user",
             "saldo" : "0"
         }
