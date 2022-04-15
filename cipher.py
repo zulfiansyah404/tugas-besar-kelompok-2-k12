@@ -27,12 +27,14 @@ def decrypt(cipher, kunci):
         if ('a' <= c <= 'z'):
             ans += chr((( modular_inverse(kunci[0], 26)*(ord(c) - ord('a') - kunci[1])) % 26) + ord('a'))
         elif ('A' <= c <= 'Z'):
-            ans += chr((( modular_inverse(kunci[0], 26)*(ord(c) - ord('A') - kunci[1])) % 26) + ord('A'))
+            ans += chr((( modular_inverse(kunci[0], 26)*(ord(c) - ord('A') - kunci[1])) % 26) + ord('A'
+            ))
         else:
             ans += c
+    print(ans)
     return ans
 
-#a = "AdMiN"
+#a = "Admin"
 #kunci = [7, 1]
 #b = encrypt(a, kunci)
 #c = decrypt(b, kunci)
