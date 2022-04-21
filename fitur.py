@@ -2,6 +2,7 @@ import os
 import sys
 from baca import *
 from olah_csv import array_to_string, string_to_csv
+import time
 
 def help():
     print("Help")
@@ -60,3 +61,8 @@ def length(x): # Fungsi Mencari panjang string
     for c in x:
         length += 1
     return length
+
+def tahun():
+    named_tuple = time.localtime()
+    return time.strftime("%Y", named_tuple)
+    
