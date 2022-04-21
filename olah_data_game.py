@@ -145,12 +145,38 @@ def search_game_at_store():
     # Tulis Kode Disini
     # Petugas : Fadhil
 
-def list_game():
+def list_game(database, user):
     clear()
     # Tulis Kode Disini
     # Petugas : Anjani
+    data_user = database["user"][user]
+    data_game = database["game"]
+    len = 0
 
-def search_my_game():
+    for arr in database["kepemilikan"]:
+        if (arr["user_id"] == data_user["id"]):
+            game_id = arr["game_id"]
+            for game in data_game:
+                if (game["id"] == game_id):
+                    if (len == 0):
+                        print("Daftar game:")
+                    print(len+1, end="\t| ")
+                    print(game["id"], end=" \t| ")
+                    print(game["nama"], end=" \t| ")
+                    print(game["kategori"], end=" \t| ")
+                    print(game["tahun_rilis"], end=" \t| ")
+                    print(game["harga"], end=" \t| ")
+                    print("\n")
+            len += 1
+
+    print()
+    if (len == 0):
+        print("Maaf, kamu belum membeli game. :(\n")
+    
+    baca()
+
+
+def search_my_game(database, user):
     clear()
     # Tulis Kode Disini
     # Petugas : Malik

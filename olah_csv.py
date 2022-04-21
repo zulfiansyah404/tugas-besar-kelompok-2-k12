@@ -88,7 +88,7 @@ def array_to_string(database, file):
         elif (file == "user"):
             ans += a["id"]+b+a["username"]+b+a["nama"]+b+a["password"]+b+a["role"]+b+a["saldo"]
         elif (file == "riwayat"):
-            ans += a["gameid"]+b+a["nama"]+b+a["harga"]+b+a["user_id"]+b+a["tahun_beli"]
+            ans += a["game_id"]+b+a["nama"]+b+a["harga"]+b+a["user_id"]+b+a["tahun_beli"]
         elif (file == "kepemilikan"):
             ans += a["game_id"]+b+a["user_id"]
         i += 1
