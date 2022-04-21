@@ -1,6 +1,7 @@
 from index import menu
 from baca import *
 from olah_csv import *
+from cipher import *
 
 def buatDatabase(data_user, dir_file):
     database = {
@@ -29,7 +30,8 @@ def login(dir_file):
     i = 0
     for data in data_user:
         if (data["username"] == username):
-            if (data["password"] == password):
+            #print(data["password"])
+            if (data["password"] == encrypt(password, [7,1])):
                 print("Selamat datang, " + data["nama"] + "!")
                 garis2(10)
                 print()
