@@ -51,7 +51,7 @@ def register(database):
             "id" : str(panjangDataBaru),
             "username" : username,
             "nama" : nama,
-            "password" : encrypt(password),
+            "password" : encrypt(password, [7, 1]),
             "role" : "user",
             "saldo" : "0"
         }
