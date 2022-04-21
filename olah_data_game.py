@@ -1,5 +1,5 @@
 from baca import *
-from fitur import length
+from fitur import length, tahun
 from olah_csv import *
 
 def quick_sort(data, left, right, indeks):
@@ -145,25 +145,6 @@ def search_game_at_store():
     # Tulis Kode Disini
     # Petugas : Fadhil
 
-def buy_game():
-    clear()
-    # Tulis Kode Disini
-    # Petugas : Sjora
-    print('Beli Game')
-    garis2(10)
-    id_game = input('Masukkan ID Game: ')
-    print()
-
-    #id game dari game.csv
-        #if (id_game gaada di game.csv) and (saldo_user cukup) and (ada stok pada toko)
-            #print('Game berhasil dibeli!')
-        #elif (id_game udh ada di game.csv) and (saldo_user cukup) and (ada stok pada toko)
-            #print('Game sudah Anda miliki!')
-        #elif (id_game gaada di game.csv) and (saldo_user ga cukup) and (ada stok pada toko)
-            #print('Saldo Anda tidak cukup untuk membeli Game tersebut!')
-        #elif (id_game gaada di game.csv) and (saldo_user cukup) and (gaada stok pada toko)
-            #print('Stok Game tersebut habis!')
-
 def list_game():
     clear()
     # Tulis Kode Disini
@@ -178,3 +159,94 @@ def riwayat():
     clear()
     # Tulis Kode Disini
     # Petugas : Sjora
+
+def buy_game(database, user):
+    clear()
+    print("Membeli Game")
+    garis2(10)
+    print()
+    data_user = database["user"][user]
+    data_game = database["game"]
+    data_kepemilikan = database["kepemilikan"]
+
+    id_game = input("Masukkan ID Game: ")
+    
+    # Cari apakah id game termasuk di dalam data game
+    ada = True
+    game = []
+    i_game = 0
+    for arr in data_game:
+        if (arr["id"] == id_game):
+            if (int(arr["stok"]) <= 0):
+                ada = False
+            else:
+                game = arr
+            break
+        i_game += 1
+
+    # Apabila stok game habis
+    if (not(ada)):
+        print("\nStok game tersebut sedang habis!\n")
+        baca()
+        return
+    
+    # Apabila Saldo Tidak Cukup
+    if (int(game["harga"]) > int(data_user["saldo"])):
+        print("\nSaldo anda tidak cukup untuk membeli Game tersebut!\n")
+        baca()
+        return
+
+    # Apabila sudah pernah beli
+    for arr in data_kepemilikan:
+        if (arr["user_id"] == data_user["id"]):
+            if (arr["game_id"] == id_game):
+                print("\nAnda Sudah Memiliki Game Tersebut!\n")
+                baca()
+                return
+
+    database["game"][i_game]["stok"] = str(int(game["stok"]) - 1)
+    database["user"][user]["saldo"] = str(int(data_user["saldo"]) - int(game["harga"]))
+
+    # Buat tambahan data kepemilikan
+    len = length(data_kepemilikan) + 1
+    temp = ["" for i in range(len)]
+
+    i = 0
+    for arr in database["kepemilikan"]:
+        temp[i] = arr
+        i += 1
+    
+    temp[i] = {
+        "game_id": id_game,
+        "user_id": data_user["id"]
+    }
+
+    database["kepemilikan"] = temp
+
+    # Buat tambahan data riwayat
+    len = length(database["riwayat"]) + 1
+    temp = ["" for i in range(len)]
+
+    i = 0
+    for arr in database["riwayat"]:
+        temp[i] = arr
+        i += 1
+    
+    temp[i] = {
+        "game_id":id_game,
+        "nama":game["nama"],
+        "harga":game["harga"],
+        "user_id": data_user["id"],
+        "tahun_beli":tahun()
+    }
+
+    database["riwayat"] = temp
+
+    print('\nGame "' + game["nama"] + '" berhasil dibeli!\n')
+    baca()
+    return database
+
+    
+
+    
+    
