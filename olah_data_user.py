@@ -71,3 +71,45 @@ def register(database):
         baca()
         return register(database)
         
+def topup(database):
+    # Petugas : Zulfiansyah
+    clear()
+    print("Top Up")
+    garis2(10)
+    data = database["user"]
+
+    username = input("Masukkan Username: ")
+    saldo = input("Masukkan Saldo: ")
+    print()
+
+    # Cek apakah username tersedia
+    ada = False
+    i = 0
+    for arr in data:
+        if (arr["username"] == username):
+            ada = True
+            break
+        else:
+            i += 1
+    
+    if (not(ada)):
+        print("Username tidak tersedia!")
+        garis2(10)
+        baca()
+        return database
+
+    saldo_user = int(data[i]["saldo"])
+    # Cek apakah saldo positif atau negatif
+    if (isNumber(saldo)):
+        if (saldo_user + int(saldo) >= 0):
+            data[i]["saldo"] = str(saldo_user + int(saldo))
+            print("Top up berhasil. Saldo "+data[i]["nama"]+" bertambah menjadi "+data[i]["saldo"]+".")
+        else:
+            print("Masukkan tidak valid.")
+    else:
+        print("Masukkan tidak valid")
+    garis2(10)
+    baca()
+    database["user"][i] = data[i]
+    return database
+
