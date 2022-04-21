@@ -27,8 +27,8 @@ def User(database, user):
     
     if (inp == '1'): list_game_toko(database["game"])
     elif (inp == '2'): database = buy_game(database, user)
-    elif (inp == '3'): list_game(database["game"])
-    elif (inp == '4'): search_my_game(database["game"], user)
+    elif (inp == '3'): list_game(database, user)
+    elif (inp == '4'): search_my_game(database, user)
     elif (inp == '5'): search_game_at_store(database["game"])
     elif (inp == '6'): riwayat(database["riwayat"]) 
     elif (inp == '7'): help()
