@@ -3,6 +3,7 @@ from baca import *
 from olah_data_user import *
 from olah_data_game import *
 from fitur import *
+from tictactoe import play
 
 # database = array berisi data pada user.csv
 # user = indeks posisi user pada elemen array
@@ -17,7 +18,11 @@ def User(database, user):
     print("7. Help")
     print("8. Save")
     print("9. Exit")
-    garis2(10)
+    garis2(15)
+    print("Program Bonus")
+    print("A. Magic Conch Shell")
+    print("B. Game Tic-Tac-Toe")
+    garis(10)
     inp = input("Input = ")
     
     if (inp == '1'): list_game_toko(database["game"])
@@ -41,7 +46,11 @@ def admin(database, user):
     print("8. Help")
     print("9. Save")
     print("10. Exit")
-    garis2(10)
+    garis(15)
+    print("Program Bonus")
+    print("A. Magic Conch Shell")
+    print("B. Game Tic-Tac-Toe")
+    garis(10)
     inp = input("Input = ")
     
     if (inp == '1'): database = register(database)
@@ -61,6 +70,12 @@ def admin(database, user):
         print(database["kepemilikan"])
         print(database["riwayat"])
         baca()
+    elif (inp == "A" or inp == "a"):
+        print("Belum Jadi!")
+        baca()
+    elif (inp == "B" or inp == "b"):
+        kotak = [["#" for j in range(3)] for i in range(3)]
+        play(kotak, True)
 
 def menu(database, user, isAdmin):
     clear()

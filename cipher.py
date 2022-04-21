@@ -18,6 +18,7 @@ def encrypt(password, kunci):
             ans += chr((( kunci[0]*(ord(t) - ord('A')) + kunci[1] ) % 26) + ord('A'))
         else:
             ans += t
+    #print(ans)
     return ans
     #return ''.join([ chr((( kunci[0]*(ord(t) - ord('a')) + kunci[1] ) % 26) + ord('a')) for t in password.lower().replace(' ', '') ])
 
@@ -31,7 +32,7 @@ def decrypt(cipher, kunci):
             ))
         else:
             ans += c
-    print(ans)
+    #print(ans)
     return ans
 
 #a = "Admin"

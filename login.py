@@ -30,7 +30,8 @@ def login(dir_file):
     i = 0
     for data in data_user:
         if (data["username"] == username):
-            if (decrypt(data["password"], [7,1]) == password):
+            #print(data["password"])
+            if (data["password"] == encrypt(password, [7,1])):
                 print("Selamat datang, " + data["nama"] + "!")
                 garis2(10)
                 print()
