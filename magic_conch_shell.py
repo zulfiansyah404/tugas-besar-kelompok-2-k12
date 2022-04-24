@@ -12,7 +12,7 @@ def kerangajaib():
         lcg = ((a*x)+c) % m 
         n = abs((lcg % 6))
 
-        jawaban = ['Ya', 'Tidak','Bisa Jadi','Mungkin','Tentunya','Tidak mungkin']
+        jawaban = ['iya kali ya', 'nggak.','bisa jadi sih','mungkin','ya iya lah','udah gausah ngarep']
         print(jawaban[n])
 
         print()
