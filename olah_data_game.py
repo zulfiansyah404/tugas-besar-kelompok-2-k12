@@ -277,42 +277,43 @@ def search_game_at_store(data):
     print("---------------------")
     inp = input("Input: ")
     
-    if (1 <= int(inp) <= 6):
-        nama = ""
-        if (inp == "1"):
-            nama = "id"
-        elif (inp == "2"):
-            nama = "nama"
-        elif (inp == "3"):
-            nama = "kategori"
-        elif (inp == "4"):
-            nama = "tahun_rilis"
-        elif (inp == "5"):
-            nama = "harga"
-        elif (inp == "6"):
-            nama = "stok"
+    if (isNumber(inp)):
+        if (1 <= int(inp) <= 6):
+            nama = ""
+            if (inp == "1"):
+                nama = "id"
+            elif (inp == "2"):
+                nama = "nama"
+            elif (inp == "3"):
+                nama = "kategori"
+            elif (inp == "4"):
+                nama = "tahun_rilis"
+            elif (inp == "5"):
+                nama = "harga"
+            elif (inp == "6"):
+                nama = "stok"
 
-        cari = input("Masukkan " + nama + ': ')
-        print()
-        ketemu = False
-        i = 1
-        for game in data:
-            if (game[nama] == cari):
-                if (ketemu == False):
-                    ketemu = True
-                    print("Daftar game pada toko yang memenuhi kriteria:")
-                print(str(i) + "\t|", game["id"] + "\t|" , game["nama"] + "\t|", game["harga"] + "\t|", game["kategori"] + "\t|", game["tahun_rilis"] + "\t|", game["stok"] + "\t|")
-                i += 1
-                if (inp == "1"): break
-        
-        if (not(ketemu)):
-            print("Tidak ada game pada inventory toko yang memenuhi kriteria")
+            cari = input("Masukkan " + nama + ': ')
+            print()
+            ketemu = False
+            i = 1
+            for game in data:
+                if (game[nama] == cari):
+                    if (ketemu == False):
+                        ketemu = True
+                        print("Daftar game pada toko yang memenuhi kriteria:")
+                    print(str(i) + "\t|", game["id"] + "\t|" , game["nama"] + "\t|", game["harga"] + "\t|", game["kategori"] + "\t|", game["tahun_rilis"] + "\t|", game["stok"] + "\t|")
+                    i += 1
+                    if (inp == "1"): break
+            
+            if (not(ketemu)):
+                print("Tidak ada game pada inventory toko yang memenuhi kriteria")
 
-        print()
-        baca()
+            print()
+            baca()
 
-    elif (inp == "0"):
-        print()
+        elif (inp == "0"):
+            print()
     else:
         search_game_at_store(data)
     
