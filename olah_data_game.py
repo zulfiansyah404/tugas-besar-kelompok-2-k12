@@ -140,8 +140,9 @@ def list_game_toko(data):
         garis2(10)
         baca()
     
-def search_game_at_store():
+def search_game_at_store(database, user):
     clear()
+
     # Tulis Kode Disini
     # Petugas : Fadhil
 
@@ -178,6 +179,10 @@ def list_game(database, user):
 
 def search_my_game(database, user):
     clear()
+    print("Cari Game yang Dimiliki")
+    garis2(10)
+    print()
+    
     # Tulis Kode Disini
     # Petugas : Malik
 
@@ -237,36 +242,10 @@ def buy_game(database, user):
     len = length(data_kepemilikan) + 1
     temp = ["" for i in range(len)]
 
-    i = 0
-    for arr in database["kepemilikan"]:
-        temp[i] = arr
-        i += 1
-    
-    temp[i] = {
-        "game_id": id_game,
-        "user_id": data_user["id"]
-    }
-
-    database["kepemilikan"] = temp
+    database["kepemilikan"] = push_data("kepemilikan", database, [id_game, data_user["id"]])
 
     # Buat tambahan data riwayat
-    len = length(database["riwayat"]) + 1
-    temp = ["" for i in range(len)]
-
-    i = 0
-    for arr in database["riwayat"]:
-        temp[i] = arr
-        i += 1
-    
-    temp[i] = {
-        "game_id":id_game,
-        "nama":game["nama"],
-        "harga":game["harga"],
-        "user_id": data_user["id"],
-        "tahun_beli":tahun()
-    }
-
-    database["riwayat"] = temp
+    database["riwayat"] = push_data("riwayat", database, [id_game, game["nama"], game["harga"], data_user["id"], tahun()])
 
     print('\nGame "' + game["nama"] + '" berhasil dibeli!\n')
     baca()

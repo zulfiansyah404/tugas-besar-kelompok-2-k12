@@ -38,28 +38,11 @@ def register(database):
             ada = True
             break
     
-    panjangDataBaru = hitungBaris(data) + 2
-    if (not(ada)):  # Jika username belum pernah ada di database
-        temp = ["" for i in range(panjangDataBaru)] # Buat data sementara yang baru dengan jumlah barisnya ditambah 1
-        i = 0
-        # Mula - mula tempelkan data yang sebelumnya ke array temp
-        for arr in data:
-            temp[i] = arr
-            i += 1
-        # Lalu buat directory array temp indeks paling bawah
-        temp[i] = {
-            "id" : str(panjangDataBaru),
-            "username" : username,
-            "nama" : nama,
-            "password" : encrypt(password, [7, 1]),
-            "role" : "user",
-            "saldo" : "0"
-        }
-        data = temp                 # Lalu salin array temp ke array data
-        database["user"] = data     # Lalu salin array data ke database["user"]
-        # Untuk Debug
-        #for i in data:
-        #    print(i)
+    if (not(ada)):  # Jika username belum pernah ada di database      
+        database["user"] = push_data("user", database, [str(len(database["user"]) + 1), username, nama, encrypt(password, [7, 1]), "user", "0"])
+
+        for i in database["user"]:
+            print(i)
 
         print("\nData berhasil ditambahkan!")
         garis2(10)
