@@ -37,11 +37,11 @@ def save(database):
 def keluar(database):
     clear()
     ans = input("Apakah anda ingin save data sebelum keluar? (y/n) ")
-    if (ans == "y"):
+    if (ans == "y" or ans == "Y"):
         #Savedata
         save(database)
         sys.exit()
-    elif (ans == "n"):
+    elif (ans == "n" or ans == "N"):
         sys.exit()
     else:
         keluar(database)
