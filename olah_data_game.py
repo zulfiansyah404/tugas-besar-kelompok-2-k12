@@ -212,7 +212,6 @@ def list_game_toko(game):
     #print("| id | nama | kategori | tahun rilis | harga | stok |")
     #for i in data:
     #    print("|",i["id"],"|",i["nama"],"|",i["kategori"],"|",i["tahun_rilis"],"|",i["harga"],"|",i["stok"],"|")
-    up = True
     ans = input("Urut Berdasarkan: ")
     print()
     inputValid = True
@@ -315,6 +314,9 @@ def search_game_at_store(data):
         elif (inp == "0"):
             print()
     else:
+        print("Inputan tidak valid")
+        print()
+        baca()
         search_game_at_store(data)
     
 

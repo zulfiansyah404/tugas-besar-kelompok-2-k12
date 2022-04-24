@@ -45,13 +45,6 @@ def cekSeri(kotak):
     return True
     
 
-def kosong(kotak, pemain1):
-    print("Masukkan Kosong! Coba Ulangi")
-    garis2(10)
-    baca()
-    play(kotak, pemain1)
-    return
-
 def play(kotak, pemain1):
     clear()  
     print("Tic Tac Toe")
@@ -88,32 +81,29 @@ def play(kotak, pemain1):
     x = input("X : "); 
     if (x != ""):
         X=int(x)-1
-    else:
-        kosong(kotak, pemain1)
     y = input("Y : "); 
     if (y != ""):
         Y=int(y)-1
-    else:
-        kosong(kotak, pemain1)
-    
-    if ((0<=X<3) and (0<=Y<3)):
-        if (kotak[X][Y] == "#"):
-            if (pemain1): kotak[X][Y] = "X"
-            else: kotak[X][Y] = "O"
+
+    if (x != "" and y != ""):
+        if ((0<=X<3) and (0<=Y<3)):
+            if (kotak[X][Y] == "#"):
+                if (pemain1): kotak[X][Y] = "X"
+                else: kotak[X][Y] = "O"
+            else:
+                print("\nKotak sudah terisi. Silakan pilih kotak lain.") 
+                garis2(10)
+                baca()
+                play(kotak, pemain1)
+                return 
         else:
-            print("\nKotak sudah terisi. Silakan pilih kotak lain.") 
+            print("\nKotak tidak valid!")
             garis2(10)
             baca()
             play(kotak, pemain1)
             return 
-    else:
-        print("\nKotak tidak valid!")
-        garis2(10)
-        baca()
-        play(kotak, pemain1)
-        return 
-    
-    play(kotak, not(pemain1))
+        
+        play(kotak, not(pemain1))
 
 #kotak = [["#" for j in range(3)] for i in range(3)]
 #play(kotak, True)
