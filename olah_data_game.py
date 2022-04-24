@@ -140,11 +140,65 @@ def list_game_toko(data):
         garis2(10)
         baca()
     
-def search_game_at_store(database, user):
-    clear()
-
+def search_game_at_store(data):
     # Tulis Kode Disini
     # Petugas : Fadhil
+    clear()
+    print("Cari Game di Toko")
+    garis2(10)
+    print()
+    
+    print("Cari game berdasarkan")
+    print("---------------------")
+    print("1. Id Game")
+    print("2. Nama")
+    print("3. Kategori")
+    print("4. Tahun Rilis")
+    print("5. Harga")
+    print("6. Stok")
+    print("0. Keluar")
+    print("---------------------")
+    inp = input("Input: ")
+    
+    if (1 <= int(inp) <= 6):
+        nama = ""
+        if (inp == "1"):
+            nama = "id"
+        elif (inp == "2"):
+            nama = "nama"
+        elif (inp == "3"):
+            nama = "kategori"
+        elif (inp == "4"):
+            nama = "tahun_rilis"
+        elif (inp == "5"):
+            nama = "harga"
+        elif (inp == "6"):
+            nama = "stok"
+
+        cari = input("Masukkan " + nama + ': ')
+        print()
+        ketemu = False
+        i = 1
+        for game in data:
+            if (game[nama] == cari):
+                if (ketemu == False):
+                    ketemu = True
+                    print("Daftar game pada toko yang memenuhi kriteria:")
+                print(str(i) + "\t|", game["id"] + "\t|" , game["nama"] + "\t|", game["harga"] + "\t|", game["kategori"] + "\t|", game["tahun_rilis"] + "\t|", game["stok"] + "\t|")
+                i += 1
+                if (inp == "1"): break
+        
+        if (not(ketemu)):
+            print("Tidak ada game pada inventory toko yang memenuhi kriteria")
+
+        print()
+        baca()
+
+    elif (inp == "0"):
+        print()
+    else:
+        search_game_at_store(data)
+    
 
 def list_game(database, user):
     clear()
@@ -178,6 +232,8 @@ def list_game(database, user):
 
 
 def search_my_game(database, user):
+    # Tulis Kode Disini
+    # Petugas : Malik
     clear()
     print("Cari Game yang Dimiliki")
     garis2(10)
@@ -225,13 +281,13 @@ def search_my_game(database, user):
     else:
         search_my_game(database, user)
     
-    # Tulis Kode Disini
-    # Petugas : Malik
-
 def riwayat():
     clear()
     # Tulis Kode Disini
     # Petugas : Sjora
+    print("Riwayat Pembelian Game")
+    garis2(10)
+    print()
 
 def buy_game(database, user):
     clear()

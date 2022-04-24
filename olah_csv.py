@@ -140,5 +140,15 @@ def push_data(nama, database, data):
             "saldo" : data[5]
         }
 
+    elif (nama == "game"):
+        temp[i] = {
+            "id" : data[0],
+            "nama" : data[1],
+            "kategori" : data[2],
+            "tahun_rilis" : data[3],
+            "harga" : data[4],
+            "stok" : data[5]
+        }
+
     database[nama] = temp
     return database[nama]
