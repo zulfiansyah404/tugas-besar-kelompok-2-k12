@@ -183,6 +183,48 @@ def search_my_game(database, user):
     garis2(10)
     print()
     
+    print("Cari game berdasarkan")
+    print("---------------------")
+    print("1. Id Game")
+    print("2. Tahun Rilis")
+    print("0. Keluar")
+    print("---------------------")
+    inp = input("Input: ")
+    if (inp == "1" or inp == "2"):
+        nama = ""
+        if (inp == "1"):
+            nama = "id"
+        else:
+            nama = "tahun_rilis"
+        
+        cari = input("Masukkan " + nama + ': ')
+        print()
+        i = 1
+        ketemu = False
+        data_user = database["user"][user]
+        for arr in database["kepemilikan"]:
+            if (arr["user_id"] == data_user["id"]):
+                for game in database["game"]:
+                    if (game["id"] == arr["game_id"] and game[nama] == cari):
+                        if (ketemu == False): 
+                            ketemu = True
+                            print("Daftar Game pada inventory yang memenuhi kriteria:")
+                        print(str(i) + "\t|", game["id"] + "\t|" , game["nama"] + "\t|", game["harga"] + "\t|", game["kategori"] + "\t|", game["tahun_rilis"] + "\t|")
+                        if (inp == 1): break
+                if (inp == 1): break
+        
+        if (not(ketemu)):
+            print("Tidak ada game pada inventory-mu yang memenuhi kriteria")
+        
+        print()
+        baca()
+
+
+    elif (inp == "0"):
+        print()
+    else:
+        search_my_game(database, user)
+    
     # Tulis Kode Disini
     # Petugas : Malik
 
