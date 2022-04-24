@@ -1,11 +1,11 @@
 from baca import *
-from fitur import length, tahun, isNumber
+from fitur import *
 from olah_csv import *
 
 def quick_sort(data, left, right, indeks):
     if (left >= right): return
 
-    tengah = int((left + right)/2)
+    tengah = int((left + right)//2)
     #print(tengah, type(tengah))
     #print(data[tengah][indeks])
     pivot = data[tengah][indeks]
@@ -19,9 +19,10 @@ def quick_sort(data, left, right, indeks):
             pRight -= 1
         if (pLeft <= pRight):
             # Operasi Swab
-            temp = data[pLeft]
-            data[pLeft] = data[pRight]
-            data[pRight] = temp
+            if (pLeft < pRight):
+                temp = data[pLeft]
+                data[pLeft] = data[pRight]
+                data[pRight] = temp
 
             pLeft += 1
             pRight -= 1
@@ -32,7 +33,7 @@ def quick_sort(data, left, right, indeks):
 def quick_sort_dec(data, left, right, indeks):
     if (left >= right): return
 
-    tengah = int((left + right)/2)
+    tengah = int((left + right)//2)
     #print(tengah, type(tengah))
     #print(data[tengah][indeks])
     pivot = data[tengah][indeks]
@@ -46,9 +47,10 @@ def quick_sort_dec(data, left, right, indeks):
             pRight -= 1
         if (pLeft <= pRight):
             # Operasi Swab
-            temp = data[pLeft]
-            data[pLeft] = data[pRight]
-            data[pRight] = temp
+            if (pLeft < pRight):
+                temp = data[pLeft]
+                data[pLeft] = data[pRight]
+                data[pRight] = temp
 
             pLeft += 1
             pRight -= 1
@@ -59,25 +61,49 @@ def quick_sort_dec(data, left, right, indeks):
 
 def tambah_game():
     clear()
-    a = True
+    print("Tambah Game")
+    garis2(10)
+    print()
 
-    while a:
-        nama = input('Masukkan nama game: ')
-        kategori = input('Masukkan kategori: ')
-        tahun = input('Masukkan tahun rilis: ')
-        harga = input('Masukkan harga: ')
-        stok = input('Masukkan stok awal: ')
 
-        if (nama != '') and (kategori != '') and (tahun != '') and (harga != '') and (stok != ''):
-            print('Selamat! Berhasil menambahkan game BNMO - Play Along With Crypto.')
-            a = False
-        else:
-            print('Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.')
-
-def ubah_game():
+def ubah_game(database):
     clear()
     # Tulis Kode Disini
     # Petugas : Malik
+    clear()
+    print("Ubah Game")
+    garis2(10)
+    print()
+
+    id_game = input("Masukkan ID game: ")
+
+    # Cek apakah id game terdapat di dalam data game
+    ketemu = False
+    i = 0
+    for game in database["game"]:
+        if (game["id"] == id_game):
+            ketemu = True
+
+            inp = input("Masukkan nama game: ")
+            if (inp != ""): database["game"][i]["nama"] = inp
+
+            inp = input("Masukkan kategori: ")
+            if (inp != ""): database["game"][i]["kategori"] = inp
+
+            inp = input("Masukkan tahun rilis: ")
+            if (inp != "" and isNumber(inp)): database["game"][i]["tahun_rilis"] = inp
+
+            inp = input("Masukkan harga: ")
+            if (inp != "" and isNumber(inp)): database["game"][i]["harga"] = inp
+
+            break
+        i += 1
+    
+    if (not(ketemu)):
+        print("Tidak ada game dengan ID tersebut!")
+    
+    print()
+    baca()
 
 def ubah_stok(database):
     # Tulis Kode Disini
@@ -122,7 +148,8 @@ def ubah_stok(database):
     baca()
     
 
-def list_game_toko(data):
+def list_game_toko(game):
+    data = game
     clear()
     # Tulis Kode Disini
     # Petugas : Zulfiansyah
