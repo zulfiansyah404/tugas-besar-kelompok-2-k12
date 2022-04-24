@@ -47,6 +47,7 @@ def keluar(database):
         keluar(database)
 
 def isNumber(x): # Fungsi mengecek apakah string x adalah angka
+    if (length(x) == 0): return False
     i = 0
     for c in x:
         #print(i)
@@ -68,3 +69,9 @@ def tahun():
     named_tuple = time.localtime()
     return time.strftime("%Y", named_tuple)
     
+def kosong(x):
+    if (length(x) > 0):
+        return False
+    else:
+        print("\nInput Tidak Boleh Kosong")
+        return True

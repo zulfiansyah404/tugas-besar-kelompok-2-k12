@@ -1,3 +1,4 @@
+from unicodedata import digit
 from baca import *
 from fitur import *
 from olah_csv import *
@@ -59,11 +60,62 @@ def quick_sort_dec(data, left, right, indeks):
     quick_sort_dec(data, pLeft, right, indeks)
 
 
-def tambah_game():
+def tambah_game(database):
+    game = database["game"]
     clear()
     print("Tambah Game")
     garis2(10)
     print()
+
+    # Membuat ID Baru
+    temp = database["game"][length(database["game"]) - 1]["id"]
+    digit = [int(temp[i]) for i in range(4,7)]
+
+    digit[2] += 1
+    if (digit[2] > 9):
+        digit[2] = 0
+        digit[1] += 1
+        if (digit[1] > 9):
+            digit[1] = 0
+            digit[0] += 1
+    id = temp[0] + temp[1] + temp[2] + temp[3]
+    for i in digit:
+        id += str(i)
+
+    # Masukkan Input Data
+    valid = True
+    nama = input("Masukkan nama game: ")
+    if (not(kosong(nama))):
+        kategori = input("Masukkan kategori: ")
+        if (not(kosong(kategori))):
+            tahun = input("Masukkan tahun rilis: ")
+            if (not(isNumber(tahun))):
+                print("\nInput tahun tidak valid! Masukan harus berupa angka")
+                valid = False
+            else:
+                harga = input("Masukkan harga: ")
+                if (not(isNumber(harga))):
+                    print("\nInput harga tidak valid! Masukan harus berupa angka")
+                    valid = False
+                else:
+                    stok = input("Masukkan stok awal: ")
+                    if (not(isNumber(stok))):
+                        print("\nInput stok tidak valid! Masukan harus berupa angka")
+                        valid = False
+        else:
+            valid = False
+    else:
+        valid = False
+
+    if (valid): 
+        database = push_data("game", database, [id, nama, kategori, tahun, harga, stok])
+        print("\nData game berhasil ditambahkan!")
+        
+    print()
+    baca()
+
+    if (not(valid)):
+        tambah_game(database)
 
 
 def ubah_game(database):
