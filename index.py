@@ -4,6 +4,7 @@ from olah_data_user import *
 from olah_data_game import *
 from fitur import *
 from tictactoe import play
+from magic_conch_shell import *
 
 # database = array berisi data pada user.csv
 # user = indeks posisi user pada elemen array
@@ -34,6 +35,10 @@ def User(database, user):
     elif (inp == '7'): help()
     elif (inp == '8'): save(database)
     elif (inp == '9'): keluar(database)  
+    elif (inp == "A" or inp == "a"): kerangajaib()
+    elif (inp == "B" or inp == "b"):
+        kotak = [["#" for j in range(3)] for i in range(3)]
+        play(kotak, True)
 
 def admin(database, user):
     print("1. Register")
@@ -63,16 +68,7 @@ def admin(database, user):
     elif (inp == '8'): help()
     elif (inp == '9'): save(database)
     elif (inp == "10"): keluar(database)
-    elif (inp == "11"):
-        clear()
-        print(database["user"])
-        print(database["game"])
-        print(database["kepemilikan"])
-        print(database["riwayat"])
-        baca()
-    elif (inp == "A" or inp == "a"):
-        print("Belum Jadi!")
-        baca()
+    elif (inp == "A" or inp == "a"): kerangajaib()
     elif (inp == "B" or inp == "b"):
         kotak = [["#" for j in range(3)] for i in range(3)]
         play(kotak, True)
