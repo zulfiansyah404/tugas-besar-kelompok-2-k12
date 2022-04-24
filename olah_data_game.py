@@ -472,8 +472,6 @@ def buy_game(database, user):
     database["user"][user]["saldo"] = str(int(data_user["saldo"]) - int(game["harga"]))
 
     # Buat tambahan data kepemilikan
-    len = length(data_kepemilikan) + 1
-    temp = ["" for i in range(len)]
 
     database["kepemilikan"] = push_data("kepemilikan", database, [id_game, data_user["id"]])
 
