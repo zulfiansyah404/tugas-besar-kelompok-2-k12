@@ -30,7 +30,7 @@ def save(database):
     string_to_csv("riwayat", direc, data_riwayat)
     string_to_csv("kepemilikan", direc, data_kepemilikan)
 
-    print("Data Berhasil Disimpan!")
+    print("\nData Berhasil Disimpan!")
     garis(10)
     baca()
 

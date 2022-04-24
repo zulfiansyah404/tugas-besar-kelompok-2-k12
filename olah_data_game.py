@@ -1,5 +1,5 @@
 from baca import *
-from fitur import length, tahun
+from fitur import length, tahun, isNumber
 from olah_csv import *
 
 def quick_sort(data, left, right, indeks):
@@ -79,10 +79,48 @@ def ubah_game():
     # Tulis Kode Disini
     # Petugas : Malik
 
-def ubah_stok():
-    clear()
+def ubah_stok(database):
     # Tulis Kode Disini
     # Petugas : Fadhil
+    clear()
+    print("Ubah Stok")
+    garis2(10)
+    print()
+
+    id_game = input("Masukkan ID game: ")
+
+    # Cek apakah id game terdapat di dalam data game
+    ketemu = False
+    i = 0
+    for game in database["game"]:
+        if (game["id"] == id_game):
+            ketemu = True
+            jml = input("Masukkan Jumlah: ")
+            print()
+            if (isNumber(jml)):
+                temp = int(game["stok"]) + int(jml)
+
+                if ((temp) < 0):
+                    print("Stok game Punten gagal dikurangi karena stok kurang. Stok sekarang:", game["stok"], "(< " + str(int(jml) * -1) + ")")
+                else:
+                    if (int(jml) >= 0):
+                        print("Stok game", game["nama"], "berhasil ditambahkan. Stok sekarang:", temp)
+                    else:
+                        print("Stok game", game["nama"], "berhasil dikurangi. Stok sekarang:", temp)
+            
+                    database["game"][i]["stok"] = str(temp)
+            else:
+                print("Input jumlah tidak valid!")
+            
+            break
+        i += 1
+    
+    if (not(ketemu)):
+        print("Tidak ada game dengan ID tersebut!")
+    
+    print()
+    baca()
+    
 
 def list_game_toko(data):
     clear()
