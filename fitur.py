@@ -88,8 +88,9 @@ def help():
 
     garis2(30)
     print("\n Untuk Menu 'List Game Toko' dan  'Game yang dimiliki', input indeks yang tertera pada game")
-    print("Misal : harga, tahun_rilis, dll")
-    print("Kamu juga bisa menambahkan '+' dan '-' untuk pengurutan list tersebut")
-    print("'+' untuk menaik dan '-' untuk menurun")
+    print("Misal : harga, tahun_rilis, dll"
+    print("=====Program bonus=====")
+    print("Magic Conch Shell - Program ini akan meminta satu pertanyaan yang akan di jawab dengan ya, tidak, mungkin, bisa jadi, tentunya, atau tidak mungkin")
+    print("Game Tic-Tac-Toe - pemain memasukan input cordinat x dan y dari symbol 'X' dan 'O',tujuan dari permainan ini adalah untuk mendapatkan 3 'X' atau 'O' dalam satu baris vertikal, horizontal atau diagonal")
     print()
     baca()
