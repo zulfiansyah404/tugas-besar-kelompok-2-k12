@@ -1,3 +1,8 @@
+def length(x): # Fungsi Mencari panjang string/array
+    length = 0
+    for c in x:
+        length += 1
+    return length
 # Fungsi CSV
 def hitungBaris(arr):
     ans = 0
@@ -88,7 +93,7 @@ def array_to_string(database, file):
         elif (file == "user"):
             ans += a["id"]+b+a["username"]+b+a["nama"]+b+a["password"]+b+a["role"]+b+a["saldo"]
         elif (file == "riwayat"):
-            ans += a["gameid"]+b+a["nama"]+b+a["harga"]+b+a["user_id"]+b+a["tahun_beli"]
+            ans += a["game_id"]+b+a["nama"]+b+a["harga"]+b+a["user_id"]+b+a["tahun_beli"]
         elif (file == "kepemilikan"):
             ans += a["game_id"]+b+a["user_id"]
         i += 1
@@ -99,3 +104,41 @@ def string_to_csv(file, direc, data):
     f = open(direc+file+".csv", "w")
     f.write(data)
     f.close()
+
+def push_data(nama, database, data):
+
+    len = length(database[nama]) + 1
+    temp = ["" for i in range(len)]
+
+    i = 0
+    for arr in database[nama]:
+        temp[i] = arr
+        i += 1
+    
+    if (nama == "kepemilikan"):
+        temp[i] = {
+            "game_id": data[0],
+            "user_id": data[1]
+        }
+    
+    elif (nama == "riwayat"):
+        temp[i] = {
+            "game_id": data[0],
+            "nama": data[1],
+            "harga": data[2],
+            "user_id": data[3],
+            "tahun_beli": data[4]
+        }
+    
+    elif (nama == "user"):
+        temp[i] = {
+            "id" : data[0],
+            "username" : data[1],
+            "nama" : data[2],
+            "password" : data[3],
+            "role" : data[4],
+            "saldo" : data[5]
+        }
+
+    database[nama] = temp
+    return database[nama]
