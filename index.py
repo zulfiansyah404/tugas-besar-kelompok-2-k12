@@ -30,7 +30,7 @@ def User(database, user):
     elif (inp == '3'): list_game(database, user)
     elif (inp == '4'): search_my_game(database, user)
     elif (inp == '5'): search_game_at_store(database["game"])
-    elif (inp == '6'): riwayat(database["riwayat"]) 
+    elif (inp == '6'): riwayat(database, user) 
     elif (inp == '7'): help()
     elif (inp == '8'): save(database)
     elif (inp == '9'): keluar(database)  

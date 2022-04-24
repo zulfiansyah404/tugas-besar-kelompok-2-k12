@@ -281,13 +281,31 @@ def search_my_game(database, user):
     else:
         search_my_game(database, user)
     
-def riwayat():
+def riwayat(database, user):
     clear()
     # Tulis Kode Disini
     # Petugas : Sjora
     print("Riwayat Pembelian Game")
     garis2(10)
     print()
+
+    id_user = database["user"][user]["id"]
+
+    ketemu = False
+    i = 1
+    for riwayat in database["riwayat"]:
+        if (riwayat["user_id"] == id_user):
+            if (not(ketemu)):
+                ketemu = True
+                print("Daftar Game:")
+            print(str(i) + "\t|", riwayat["game_id"] + "\t|" , riwayat["nama"] + "\t|", riwayat["harga"] + "\t|", riwayat["tahun_beli"])
+            i += 1   
+    
+    if (not(ketemu)):
+        print("Maaf, kamu tidak ada riwayat pembelian game.")
+    
+    print()
+    baca()
 
 def buy_game(database, user):
     clear()
