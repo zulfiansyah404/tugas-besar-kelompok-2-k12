@@ -75,3 +75,21 @@ def kosong(x):
     else:
         print("\nInput Tidak Boleh Kosong")
         return True
+
+def help():
+    clear()
+    print("Help")
+    garis2(10)
+
+    print()
+    print("Masukkan input sesuai yang diinstruksikan dalam perintah")
+    print("\nDalam menu kamu bisa menginput angka yang tertera pada menu tersebut")
+    print("Program akan mengulangi program tersebut sampai kamu menuulis input yang benar")
+
+    garis2(30)
+    print("\n Untuk Menu 'List Game Toko' dan  'Game yang dimiliki', input indeks yang tertera pada game")
+    print("Misal : harga, tahun_rilis, dll")
+    print("Kamu juga bisa menambahkan '+' dan '-' untuk pengurutan list tersebut")
+    print("'+' untuk menaik dan '-' untuk menurun")
+    print()
+    baca()

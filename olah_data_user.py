@@ -41,8 +41,8 @@ def register(database):
     if (not(ada)):  # Jika username belum pernah ada di database      
         database["user"] = push_data("user", database, [str(len(database["user"]) + 1), username, nama, encrypt(password, [7, 1]), "user", "0"])
 
-        for i in database["user"]:
-            print(i)
+        #for i in database["user"]:
+        #    print(i)
 
         print("\nData berhasil ditambahkan!")
         garis2(10)
